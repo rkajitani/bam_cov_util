@@ -211,7 +211,7 @@ int cigar_aln_len(string &cigar)
 			seg_len = 10 * seg_len + (*itr - 48);
 		}
 		else {
-			if (*itr != 'I')
+			if (*itr != 'I' && *itr != 'S' && *itr != 'H')
 				aln_len += seg_len;
 			seg_len = 0;
 		}
@@ -223,6 +223,9 @@ int cigar_aln_len(string &cigar)
 
 void increment(vector<int> &vec, int l_pos, int r_pos)
 {
+	if (l_pos < 0 || l_pos >= vec.size())
+		return;
+
 	vector<int>::iterator end =  r_pos > vec.size() ? vec.end() : vec.begin() + r_pos;
 	for (auto itr = (vec.begin() + l_pos); itr!= end; ++itr)
 		++(*itr);
@@ -242,14 +245,6 @@ void print_coverage(unordered_map<string, vector<int> > &coverage)
 		for (auto pos_itr = coverage[*seq_itr].begin(); pos_itr != coverage[*seq_itr].end(); ++pos_itr)
 			cout << *pos_itr << "\n";
 	}
-
-/*
-	for (auto seq_itr = coverage.begin(); seq_itr != coverage.end(); ++seq_itr) {
-		cout << '>' << seq_itr->first << '\n';
-		for (auto pos_itr = seq_itr->second.begin(); pos_itr != seq_itr->second.end(); ++pos_itr)
-			cout << *pos_itr << "\n";
-	}
-*/
 }
 
 FILE *getline_fp(stringstream &ss, FILE *fp)
