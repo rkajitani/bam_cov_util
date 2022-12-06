@@ -11,7 +11,7 @@
 #include <ctype.h>
 #include <cstring>
 
-#define SAMTOOLS "/home/kajitani/bin/samtools"
+#define SAMTOOLS "samtools"
 
 using namespace std;
 
