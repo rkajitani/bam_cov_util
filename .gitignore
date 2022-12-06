@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+bam_pileup
+coverage_breakpoint
+coverage_count_covered
+coverage_freq
+coverage_mean
+coverage_mean_upper_limit
+coverage_smooth
+coverage_stat
+merge_coverage
